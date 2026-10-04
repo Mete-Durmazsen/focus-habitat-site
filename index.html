@@ -4,123 +4,60 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Focus Habitat</title>
-<meta name="description" content="A calm focus timer for iPhone. Every focused minute leaves a leaf in a small room that slowly becomes yours. No streaks, no account, nothing leaves your device.">
+<meta name="description" content="A calm focus timer for iPhone. Every credited session leaves a leaf in a small room that slowly becomes yours. No streaks, no account, nothing leaves your device.">
 <meta property="og:title" content="Focus Habitat">
 <meta property="og:description" content="A little focus. A world of your own.">
 <meta property="og:image" content="https://focushabitat.app/assets/og.jpg?v=mino-v1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="1200">
 <meta property="og:image:alt" content="Mino holding a bowl of leaves beside a warm desk lamp">
-<meta name="theme-color" content="#121a15">
+<meta name="theme-color" content="#f2efe5">
 <link rel="icon" href="assets/favicon.png?v=mino-v1" type="image/png" sizes="64x64">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=mino-v1" sizes="180x180">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=room-v2">
-<script src="script.js?v=room-v2" defer></script>
-
+<link rel="stylesheet" href="style.css?v=desk-v3">
+<script src="script.js?v=desk-v3" defer></script>
 </head>
 <body>
 
 <header class="nav">
   <div class="wrap">
     <a class="brand" href="/"><img src="assets/icon.png?v=mino-v1" alt="">Focus Habitat</a>
-    <nav aria-label="Main">
-      <a href="#story">The experience</a>
-      <a href="#bowl-sec">The bowl</a>
-      <a href="#plus">Plus</a>
-      <a class="keep" href="support">Support</a>
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to evening colours" aria-pressed="false"><span aria-hidden="true">◐</span></button>
-    </nav>
+    <nav aria-label="Main"><a href="#inside">Inside the app</a><a href="#plus">Habitat Plus</a><a class="keep" href="support">Support</a></nav>
   </div>
 </header>
 
 <main>
-  <section class="hero" aria-labelledby="hero-title">
-    <div class="wrap hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow" data-reveal><i></i> A quiet little place for your time</span>
-        <h1 id="hero-title" data-reveal>Make room.<br>For your <span class="focus-word">focus<svg viewBox="0 0 350 30" aria-hidden="true"><path d="M4 21Q160-8 346 13"/></svg></span>.</h1>
-        <p class="lead" data-reveal>A little time with Mino. A leaf that stays. A room that slowly becomes a story only you could tell.</p>
-        <div class="cta" data-reveal>
-          <button class="btn btn-primary" id="playPreview" type="button"><span class="play-symbol" aria-hidden="true">▶</span><span id="previewButtonText">Try a quiet moment</span></button>
-          <a class="btn btn-line" href="#story">Explore the room <span aria-hidden="true">↗</span></a>
-        </div>
-        <p class="preview-note" data-reveal>12-second interactive preview. Nothing is saved.</p>
-        <div class="hero-facts" data-reveal><span>No streaks</span><span>No account</span><span>All yours</span></div>
-      </div>
-      <div class="stage" id="heroStage" data-state="ready" aria-label="Interactive preview of a focus session">
-        <div class="room-glow" aria-hidden="true"></div><div class="room-orbit" aria-hidden="true"></div>
-        <span class="stage-label">YOUR LITTLE CORNER</span>
-        <img class="scene-lamp" src="assets/room/lamp.png" alt="" aria-hidden="true" width="512" height="512">
-        <div class="phone hero-phone">
-          <div class="screens">
-            <img class="screen is-active" data-hero-screen="ready" src="assets/01-habitat.jpg" alt="Focus Habitat ready to start a session" width="414" height="900" fetchpriority="high">
-            <img class="screen" data-hero-screen="focus" src="assets/02-focus.jpg" alt="Focus Habitat during a focus session" width="414" height="900" aria-hidden="true">
-            <img class="screen" data-hero-screen="complete" src="assets/03-completion.jpg" alt="Focus Habitat after a session, with earned progress" width="414" height="900" aria-hidden="true">
-          </div>
-        </div>
-        <div class="timer-chip"><span class="chip-label" id="previewState">A little time for you</span><b id="chipTime">25:00</b><div class="chip-track" aria-hidden="true"><i id="previewProgress"></i></div><span id="previewCaption">One session. One small beginning.</span></div>
-        <div class="hero-bowl" aria-hidden="true"><img class="bowl-back" src="assets/room/bowl-back.png" alt=""><div id="heroLeaves" class="mini-leaves"><img src="assets/room/leaf-sage.png" alt=""></div><img class="bowl-front" src="assets/room/bowl-front.png" alt=""><span class="leaf-receipt" id="leafReceipt">A leaf, kept.</span></div>
-        <img class="mino" src="assets/mino.png" alt="" aria-hidden="true" width="512" height="512">
-        <span class="stage-caption">Focus → a trace → your world</span>
-        <span class="ambient-leaf leaf-a" aria-hidden="true"></span><span class="ambient-leaf leaf-b" aria-hidden="true"></span><span class="ambient-leaf leaf-c" aria-hidden="true"></span>
-      </div>
-    </div>
-    <a class="scroll-hint" href="#story"><span aria-hidden="true">↓</span> A small session. A lasting trace.</a>
-    <p class="sr-only" id="previewAnnouncement" role="status" aria-live="polite"></p>
-  </section>
-
-  <section class="story" id="story" aria-labelledby="story-title">
+  <section class="desk-intro" aria-labelledby="hero-title">
     <div class="wrap">
-      <div class="section-heading"><span class="eyebrow">The experience</span><h2 id="story-title">Time passes.<br><span>Something stays.</span></h2><p>Not another score to chase. A little world shaped by the work you actually do.</p></div>
-      <div class="story-grid">
-        <div class="story-shot">
-          <div class="story-halo" aria-hidden="true"></div>
-          <div class="phone"><div class="screens">
-            <img class="screen is-active" data-story-screen="0" src="assets/01-habitat.jpg" alt="Choosing a focus session" width="414" height="900">
-            <img class="screen" data-story-screen="1" src="assets/02-focus.jpg" alt="Focusing beside Mino" width="414" height="900" aria-hidden="true">
-            <img class="screen" data-story-screen="2" src="assets/03-completion.jpg" alt="The session completion and earned leaf" width="414" height="900" aria-hidden="true">
-          </div></div>
-          <div class="story-tabs" role="group" aria-label="Preview a session stage"><button type="button" data-story-select="0" aria-pressed="true">01 · Begin</button><button type="button" data-story-select="1" aria-pressed="false">02 · Focus</button><button type="button" data-story-select="2" aria-pressed="false">03 · Keep</button></div>
-        </div>
-        <div class="story-steps">
-          <article class="story-step is-on" data-step="0"><span class="step-number" aria-hidden="true">01</span><div><span class="eyebrow">A small beginning</span><h3>Just open.<br>Then focus.</h3><p>Choose 5 to 120 minutes, or a quick preset. Add a label if you like. Mino is already there; you don’t have to organise your life to begin.</p></div></article>
-          <article class="story-step" data-step="1"><span class="step-number" aria-hidden="true">02</span><div><span class="eyebrow">A little company</span><h3>Your time.<br>Your quiet corner.</h3><p>The room settles, the countdown runs, and Mino stays beside you. Pause or step away when you need to. The timer keeps time even when the app closes.</p></div></article>
-          <article class="story-step" data-step="2"><span class="step-number" aria-hidden="true">03</span><div><span class="eyebrow">A trace that stays</span><h3>You did the work.<br>The room remembers.</h3><p>A leaf for the bowl. A little Star Dust. Time collected into a chapter. A short, kind ending, and something of this session stays with you.</p></div></article>
-        </div>
+      <div class="intro-copy">
+        <h1 id="hero-title">A room that<br>remembers.</h1>
+        <div class="intro-side"><p>A focus app for iPhone. Quiet company while you work, and a little world shaped by the time you give it.</p><span class="release-note">Coming soon to the App Store</span></div>
+      </div>
+      <div class="desk-scene" id="deskScene" data-lamp="on">
+        <div class="desk-light" aria-hidden="true"></div>
+        <div class="desk-surface" aria-hidden="true"></div>
+        <button class="desk-object lamp-object" id="deskLamp" type="button" disabled aria-label="Turn the desk lamp off" aria-pressed="true"><img src="assets/room/lamp.png" alt="" width="512" height="512"><span class="object-label">The light <span aria-hidden="true">↗</span></span></button>
+        <button class="desk-object book-object" id="deskBook" type="button" disabled aria-label="Open the chapter notebook" aria-expanded="false" aria-controls="chapterNote"><img class="book-open" src="assets/room/notebook.png" alt="" width="512" height="512"><img class="book-closed" src="assets/room/album.png" alt="" width="512" height="512"><span class="book-page" aria-hidden="true">Reading<br><small>A chapter of your own.</small></span><span class="object-label">A chapter <span aria-hidden="true">↗</span></span></button>
+        <img class="desk-pencil" src="assets/room/pencil.png" alt="" aria-hidden="true" width="512" height="512">
+        <div class="desk-bowl" role="img" aria-label="A ceramic bowl holding leaves from past focus sessions"><img class="bowl-back" src="assets/room/bowl-back.png" alt=""><div class="desk-leaves" aria-hidden="true"><img src="assets/room/leaf-sage.png" alt=""><img src="assets/room/leaf-walnut.png" alt=""><img src="assets/room/leaf-sage.png" alt=""></div><img class="bowl-front" src="assets/room/bowl-front.png" alt=""><span class="object-label">Time, kept</span></div>
+        <button class="desk-object mino-object" id="deskMino" type="button" disabled aria-label="Say hello to Mino"><img id="minoPose" src="assets/room/mino-idle.png" alt="" width="512" height="512"><span class="object-label">Mino <span aria-hidden="true">↗</span></span></button>
+      </div>
+      <div class="desk-footnote"><span class="desk-invitation">Touch the objects. Make yourself at home.</span><span id="deskStatus" role="status" aria-live="polite">A little light. A little company.</span></div>
+      <div class="chapter-note" id="chapterNote" hidden>
+        <img src="assets/room/chapter.png" alt="The Reading chapter's growing arch" width="512" height="512">
+        <div><span class="label">What your time becomes</span><h2>Something you can<br>look back on.</h2><p>Give a session a label, like Reading. Come back to it, and its chapter takes shape. Finish when you’re ready; its story stays on your shelf.</p><span class="note-caption">An illustrative chapter from the app. Your own history starts with you.</span></div>
+        <button type="button" class="note-close" id="closeChapter" aria-label="Close the chapter notebook">×</button>
       </div>
     </div>
   </section>
 
-  <section class="bowl-sec" id="bowl-sec" aria-labelledby="bowl-title">
-    <div class="wrap bowl-grid">
-      <div><span class="eyebrow">Small things add up</span><h2 id="bowl-title">It starts with<br><span>one leaf.</span></h2><p>Every credited session adds a leaf. After 35 sessions, new leaves settle over older ones in a new season’s colours. The bowl stays full. Your history keeps every one.</p><button class="btn btn-primary" id="dropLeaf" type="button">Leave a little trace <span aria-hidden="true">↘</span></button><p class="preview-note">Try it here. This is a website preview.</p></div>
-      <div class="bowl-illustration">
-        <div class="bowl-aura" aria-hidden="true"></div>
-        <div class="real-bowl" id="bowl" role="img" aria-label="Preview bowl with seven collected leaves"><img class="bowl-back" src="assets/room/bowl-back.png" alt="" aria-hidden="true"><div id="leafPile" class="leaf-pile" aria-hidden="true"><img src="assets/room/leaf-walnut.png" alt="" style="--x:14%;--y:25%;--r:-40deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:33%;--y:27%;--r:-9deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:52%;--y:29%;--r:22deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:15%;--y:25%;--r:53deg"><img src="assets/room/leaf-walnut.png" alt="" style="--x:34%;--y:27%;--r:-21deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:53%;--y:29%;--r:10deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:16%;--y:25%;--r:41deg"></div><img class="bowl-front" src="assets/room/bowl-front.png" alt="" aria-hidden="true"></div>
-        <div class="counter" role="status" aria-live="polite"><b id="leafCount">7</b><span id="leafNote">leaves kept · season 1</span></div>
-        <span class="bowl-caption">Nothing wilts. Nothing is lost.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Chapters -->
-  <section class="chapters" aria-labelledby="chap-title">
+  <section class="inside" id="inside" aria-labelledby="inside-title">
     <div class="wrap">
-      <div class="chapters-head section-heading">
-        <span class="eyebrow">Your personal history</span>
-        <h2 id="chap-title">Not just hours.<br>Chapters of your life.</h2>
-        <p>Label a session and it joins a chapter. Chapters take shape as the hours add up, rest on the shelf when you finish them, and keep a short story of how they went.</p>
-      </div>
+      <div class="section-heading"><span class="label">Inside Focus Habitat</span><h2 id="inside-title">Your room. Your work.<br>Your own history.</h2><p>Start simply. Leave a trace. Find your way back to what matters.</p></div>
       <div class="shots">
-        <figure data-reveal><div class="phone"><img src="assets/04-journey.jpg" alt="Journey: active chapters and a way back into focus" width="414" height="900" loading="lazy"></div>
-          <figcaption><b>Continue</b>Pick up the chapter you were building.</figcaption></figure>
-        <figure data-reveal><div class="phone"><img src="assets/05-chapter-story.jpg" alt="A finished chapter's short story with time, sessions and longest sitting" width="414" height="900" loading="lazy"></div>
-          <figcaption><b>Chapter story</b>Time, sessions, longest sitting, and a few lines of how it went.</figcaption></figure>
-        <figure data-reveal><div class="phone"><img src="assets/06-you.jpg" alt="You: this week's focus with a daily chart and a short weekly story" width="414" height="900" loading="lazy"></div>
-          <figcaption><b>Your week</b>A gentle look back, with medals that only add up.</figcaption></figure>
+        <figure><div class="phone"><img src="assets/01-habitat.jpg" alt="The actual Habitat screen, with Mino and focus session controls" width="414" height="900" loading="lazy"></div><figcaption><span class="shot-index">01</span><div><b>Settle in</b>Choose your time, add a label if you want, and begin. Mino is already there.</div></figcaption></figure>
+        <figure><div class="phone"><img src="assets/04-journey.jpg" alt="The actual Journey screen with active chapters" width="414" height="900" loading="lazy"></div><figcaption><span class="shot-index">02</span><div><b>Build a chapter</b>Your sessions gather around what you worked on. A chapter grows into something you can keep.</div></figcaption></figure>
+        <figure><div class="phone"><img src="assets/06-you.jpg" alt="The actual You screen showing a week of focus history" width="414" height="900" loading="lazy"></div><figcaption><span class="shot-index">03</span><div><b>Look back kindly</b>A record of the time you made. No streak to protect, and nothing to catch up on.</div></figcaption></figure>
       </div>
     </div>
   </section>
@@ -129,20 +66,20 @@
   <section class="details" aria-labelledby="det-title">
     <div class="wrap">
       <span class="label">Made for iPhone</span>
-      <h2 id="det-title">Small details, done carefully.</h2>
+      <h2 id="det-title">Fits around<br>your day.</h2>
       <div class="tiles">
-        <div class="tile" data-reveal><span class="k">Lock Screen</span><h3>Live Activities</h3><p>The countdown on your Lock Screen and in the Dynamic Island, with pause and end.</p></div>
-        <div class="tile" data-reveal><span class="k">Home Screen</span><h3>Widgets and Siri</h3><p>Start a session from a widget, the Lock Screen, or by asking Siri.</p></div>
-        <div class="tile" data-reveal><span class="k">12 languages</span><h3>Speaks yours</h3><p>English, Türkçe, Deutsch, Español, Français, Italiano, 日本語, 한국어, Nederlands, Português, Русский, 中文.</p></div>
-        <div class="tile" data-reveal><span class="k">0 streaks</span><h3>No guilt, ever</h3><p>Nothing wilts, decays or resets. A quiet week costs you nothing.</p></div>
-        <div class="tile" data-reveal><span class="k">Accessibility</span><h3>For everyone</h3><p>VoiceOver, Dynamic Type and Reduce Motion, throughout the app.</p></div>
-        <div class="tile" data-reveal><span class="k">0 servers</span><h3>Private by design</h3><p>No account and no tracking. Your history lives on your iPhone.</p></div>
+        <div class="tile"><span class="k">Lock Screen</span><h3>Live Activities</h3><p>The countdown on your Lock Screen and in the Dynamic Island, with pause and end.</p></div>
+        <div class="tile"><span class="k">Home Screen</span><h3>Widgets and Siri</h3><p>Start a session from a widget, the Lock Screen, or by asking Siri.</p></div>
+        <div class="tile"><span class="k">12 languages</span><h3>Speaks yours</h3><p>English, Türkçe, Deutsch, Español, Français, Italiano, 日本語, 한국어, Nederlands, Português, Русский, 中文.</p></div>
+        <div class="tile"><span class="k">0 streaks</span><h3>No guilt, ever</h3><p>Nothing wilts, decays or resets. A quiet week costs you nothing.</p></div>
+        <div class="tile"><span class="k">Accessibility</span><h3>For everyone</h3><p>VoiceOver, Dynamic Type and Reduce Motion, throughout the app.</p></div>
+        <div class="tile"><span class="k">0 servers</span><h3>Private by design</h3><p>No account and no tracking. Your history lives on your iPhone.</p></div>
       </div>
     </div>
   </section>
 
   <!-- Plus -->
-  <section id="plus" aria-labelledby="plus-title" style="padding-top:0">
+  <section id="plus" aria-labelledby="plus-title" class="plus-section">
     <div class="wrap">
       <div class="plus">
         <div class="bg"><img id="plusImg" src="assets/plus.jpg" alt="" loading="lazy"></div>
@@ -159,8 +96,8 @@
   <section class="promise" aria-labelledby="promise-title">
     <div class="wrap">
       <span class="label">Our promise</span>
-      <h2 id="promise-title" data-reveal>Your history never leaves your phone.</h2>
-      <p data-reveal>No servers, no accounts, no analytics sent anywhere. Sessions, labels and notes are stored on your iPhone, and you can export a backup whenever you like. <a href="privacy">Read the privacy policy</a>.</p>
+      <h2 id="promise-title">Your history never leaves your phone.</h2>
+      <p>No servers, no accounts, no analytics sent anywhere. Sessions, labels and notes are stored on your iPhone, and you can export a backup whenever you like. <a href="privacy">Read the privacy policy</a>.</p>
     </div>
   </section>
 
@@ -179,9 +116,9 @@
 
   <section class="final" aria-labelledby="final-title">
     <div class="wrap">
-      <img src="assets/icon.png?v=mino-v1" alt="Focus Habitat app icon" width="112" height="112" data-reveal>
-      <h2 id="final-title" data-reveal>A quiet place to do focused work.</h2>
-      <p data-reveal>Coming soon to the App Store. Questions or launch news: <span class="mail">support@focushabitat.app</span></p>
+      <img src="assets/icon.png?v=mino-v1" alt="Focus Habitat app icon" width="112" height="112">
+      <h2 id="final-title">A quiet place to do focused work.</h2>
+      <p>Coming soon to the App Store. <a class="mail" href="mailto:support@focushabitat.app">Get in touch</a></p>
     </div>
   </section>
 </main>
