@@ -6,7 +6,7 @@
 <title>Focus Habitat</title>
 <meta name="description" content="A calm focus timer for iPhone. Every focused minute leaves a leaf in a small room that slowly becomes yours. No streaks, no account, nothing leaves your device.">
 <meta property="og:title" content="Focus Habitat">
-<meta property="og:description" content="Every focused minute leaves a leaf.">
+<meta property="og:description" content="A little focus. A world of your own.">
 <meta property="og:image" content="https://focushabitat.app/assets/og.jpg?v=mino-v1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="1200">
@@ -16,9 +16,10 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=mino-v1" sizes="180x180">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.replace("no-js","js")</script>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=room-v2">
+<script src="script.js?v=room-v2" defer></script>
+
 </head>
 <body>
 
@@ -26,102 +27,81 @@
   <div class="wrap">
     <a class="brand" href="/"><img src="assets/icon.png?v=mino-v1" alt="">Focus Habitat</a>
     <nav aria-label="Main">
-      <a href="#story">How it works</a>
+      <a href="#story">The experience</a>
       <a href="#bowl-sec">The bowl</a>
       <a href="#plus">Plus</a>
       <a class="keep" href="support">Support</a>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to evening colours" aria-pressed="false"><span aria-hidden="true">◐</span></button>
     </nav>
   </div>
 </header>
 
 <main>
-  <!-- Hero: the lamp comes on, a leaf settles, the timer is already running. -->
   <section class="hero" aria-labelledby="hero-title">
-    <canvas id="leaves" aria-hidden="true"></canvas>
-    <div class="wrap">
-      <div>
-        <img class="hero-mark" src="assets/icon.png?v=mino-v1" alt="Focus Habitat logo: Mino holding a bowl of leaves beside a warm desk lamp" data-hero>
-        <h1 id="hero-title" data-hero>Every focused minute leaves a <span class="leafword">leaf</span>.</h1>
-        <p class="lead" data-hero>Focus Habitat is a calm focus timer for iPhone. Start a session and Mino settles in beside you.
-          When it ends, the time stays: a leaf in the bowl, a chapter that grows, a room that slowly becomes yours.</p>
-        <div class="cta" data-hero>
-          <span class="btn btn-store" role="img" aria-label="Coming soon on the App Store">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.1-1.7-2.9-1.9-3.5-1.9-1.5-.2-2.9.9-3.7.9-.8 0-1.9-.9-3.2-.8-1.6 0-3.2 1-4 2.5-1.7 3-.4 7.4 1.2 9.8.8 1.2 1.8 2.5 3 2.4 1.2 0 1.7-.8 3.2-.8s1.9.8 3.2.8c1.3 0 2.2-1.2 3-2.4.9-1.4 1.3-2.7 1.3-2.8 0 0-2.6-1-2.6-4zM14 5.5c.7-.8 1.1-1.9 1-3-1 0-2.1.7-2.8 1.5-.6.7-1.2 1.8-1 2.9 1.1.1 2.1-.6 2.8-1.4z"/></svg>
-            <span><small>Coming soon on the</small>App Store</span>
-          </span>
-          <a class="btn btn-line" href="#story">See a session</a>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow" data-reveal><i></i> A quiet little place for your time</span>
+        <h1 id="hero-title" data-reveal>Make room.<br>For your <span class="focus-word">focus<svg viewBox="0 0 350 30" aria-hidden="true"><path d="M4 21Q160-8 346 13"/></svg></span>.</h1>
+        <p class="lead" data-reveal>A little time with Mino. A leaf that stays. A room that slowly becomes a story only you could tell.</p>
+        <div class="cta" data-reveal>
+          <button class="btn btn-primary" id="playPreview" type="button"><span class="play-symbol" aria-hidden="true">▶</span><span id="previewButtonText">Try a quiet moment</span></button>
+          <a class="btn btn-line" href="#story">Explore the room <span aria-hidden="true">↗</span></a>
         </div>
-        <p class="fine" data-hero>Free · No account · No streaks · No ads</p>
+        <p class="preview-note" data-reveal>12-second interactive preview. Nothing is saved.</p>
+        <div class="hero-facts" data-reveal><span>No streaks</span><span>No account</span><span>All yours</span></div>
       </div>
-      <div class="stage" data-hero-stage>
-        <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
-          <circle class="track" cx="100" cy="100" r="94"/>
-          <circle class="prog" id="ringProg" cx="100" cy="100" r="94" pathLength="1" stroke-dasharray="0.2 1"/>
-        </svg>
-        <div class="phone"><img src="assets/01-habitat.jpg" alt="Focus Habitat home: a warm wooden room with a desk, shelves, the companion Mino and a Start Focus button" width="414" height="900"></div>
-        <div class="timer-chip" aria-hidden="true"><b id="chipTime">25:00</b><span>Focusing · Thesis</span></div>
-        <img class="mino" src="assets/mino.png" alt="" aria-hidden="true">
-      </div>
-    </div>
-  </section>
-
-  <!-- Story: one session, three moments. The phone stays put; the steps scroll past it. -->
-  <section class="story" id="story" aria-labelledby="story-title">
-    <div class="wrap">
-      <span class="label">One session</span>
-      <h2 id="story-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">How a session works</h2>
-      <div class="story-grid">
-        <div class="story-steps">
-          <article class="story-step is-on" data-step="0">
-            <span class="label">Before · 0:00</span>
-            <h3>Pick a length. Name it, or don't.</h3>
-            <p>Choose a session from 5 to 120 minutes, or use a quick preset. Add a label like Thesis or Guitar if you want the time to grow into a chapter. Then tap Start Focus.</p>
-          </article>
-          <article class="story-step" data-step="1">
-            <span class="label">During · 12:40 left</span>
-            <h3>The room dims. Nothing asks for you.</h3>
-            <p>A quiet room tone, a countdown, and Mino working beside you. Pause, take a note, or step away; the timer keeps time from real timestamps, even if the app closes.</p>
-          </article>
-          <article class="story-step" data-step="2">
-            <span class="label">After · 25:00 done</span>
-            <h3>A short, kind ending.</h3>
-            <p>See what the session added, a leaf for the bowl and a little Star Dust, then go. No scores, no streak counter, no push to keep going.</p>
-          </article>
-        </div>
-        <div class="story-shot">
-          <div class="phone" style="position:sticky;top:120px">
-            <img src="assets/01-habitat.jpg" alt="Choosing a session" width="414" height="900">
-            <img class="layer" src="assets/02-focus.jpg" alt="A session in progress" width="414" height="900" loading="lazy">
-            <img class="layer" src="assets/03-completion.jpg" alt="The completion moment" width="414" height="900" loading="lazy">
+      <div class="stage" id="heroStage" data-state="ready" aria-label="Interactive preview of a focus session">
+        <div class="room-glow" aria-hidden="true"></div><div class="room-orbit" aria-hidden="true"></div>
+        <span class="stage-label">YOUR LITTLE CORNER</span>
+        <img class="scene-lamp" src="assets/room/lamp.png" alt="" aria-hidden="true" width="512" height="512">
+        <div class="phone hero-phone">
+          <div class="screens">
+            <img class="screen is-active" data-hero-screen="ready" src="assets/01-habitat.jpg" alt="Focus Habitat ready to start a session" width="414" height="900" fetchpriority="high">
+            <img class="screen" data-hero-screen="focus" src="assets/02-focus.jpg" alt="Focus Habitat during a focus session" width="414" height="900" aria-hidden="true">
+            <img class="screen" data-hero-screen="complete" src="assets/03-completion.jpg" alt="Focus Habitat after a session, with earned progress" width="414" height="900" aria-hidden="true">
           </div>
         </div>
+        <div class="timer-chip"><span class="chip-label" id="previewState">A little time for you</span><b id="chipTime">25:00</b><div class="chip-track" aria-hidden="true"><i id="previewProgress"></i></div><span id="previewCaption">One session. One small beginning.</span></div>
+        <div class="hero-bowl" aria-hidden="true"><img class="bowl-back" src="assets/room/bowl-back.png" alt=""><div id="heroLeaves" class="mini-leaves"><img src="assets/room/leaf-sage.png" alt=""></div><img class="bowl-front" src="assets/room/bowl-front.png" alt=""><span class="leaf-receipt" id="leafReceipt">A leaf, kept.</span></div>
+        <img class="mino" src="assets/mino.png" alt="" aria-hidden="true" width="512" height="512">
+        <span class="stage-caption">Focus → a trace → your world</span>
+        <span class="ambient-leaf leaf-a" aria-hidden="true"></span><span class="ambient-leaf leaf-b" aria-hidden="true"></span><span class="ambient-leaf leaf-c" aria-hidden="true"></span>
+      </div>
+    </div>
+    <a class="scroll-hint" href="#story"><span aria-hidden="true">↓</span> A small session. A lasting trace.</a>
+    <p class="sr-only" id="previewAnnouncement" role="status" aria-live="polite"></p>
+  </section>
+
+  <section class="story" id="story" aria-labelledby="story-title">
+    <div class="wrap">
+      <div class="section-heading"><span class="eyebrow">The experience</span><h2 id="story-title">Time passes.<br><span>Something stays.</span></h2><p>Not another score to chase. A little world shaped by the work you actually do.</p></div>
+      <div class="story-grid">
+        <div class="story-shot">
+          <div class="story-halo" aria-hidden="true"></div>
+          <div class="phone"><div class="screens">
+            <img class="screen is-active" data-story-screen="0" src="assets/01-habitat.jpg" alt="Choosing a focus session" width="414" height="900">
+            <img class="screen" data-story-screen="1" src="assets/02-focus.jpg" alt="Focusing beside Mino" width="414" height="900" aria-hidden="true">
+            <img class="screen" data-story-screen="2" src="assets/03-completion.jpg" alt="The session completion and earned leaf" width="414" height="900" aria-hidden="true">
+          </div></div>
+          <div class="story-tabs" role="group" aria-label="Preview a session stage"><button type="button" data-story-select="0" aria-pressed="true">01 · Begin</button><button type="button" data-story-select="1" aria-pressed="false">02 · Focus</button><button type="button" data-story-select="2" aria-pressed="false">03 · Keep</button></div>
+        </div>
+        <div class="story-steps">
+          <article class="story-step is-on" data-step="0"><span class="step-number" aria-hidden="true">01</span><div><span class="eyebrow">A small beginning</span><h3>Just open.<br>Then focus.</h3><p>Choose 5 to 120 minutes, or a quick preset. Add a label if you like. Mino is already there; you don’t have to organise your life to begin.</p></div></article>
+          <article class="story-step" data-step="1"><span class="step-number" aria-hidden="true">02</span><div><span class="eyebrow">A little company</span><h3>Your time.<br>Your quiet corner.</h3><p>The room settles, the countdown runs, and Mino stays beside you. Pause or step away when you need to. The timer keeps time even when the app closes.</p></div></article>
+          <article class="story-step" data-step="2"><span class="step-number" aria-hidden="true">03</span><div><span class="eyebrow">A trace that stays</span><h3>You did the work.<br>The room remembers.</h3><p>A leaf for the bowl. A little Star Dust. Time collected into a chapter. A short, kind ending, and something of this session stays with you.</p></div></article>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Bowl: the app's real rule, playable. 35 leaves make a season. -->
   <section class="bowl-sec" id="bowl-sec" aria-labelledby="bowl-title">
-    <div class="wrap">
-      <div>
-        <span class="label">The leaf bowl</span>
-        <h2 id="bowl-title">One session, one leaf. Thirty-five make a season.</h2>
-        <p>On a shelf in your room sits a small bowl. Every credited session adds a leaf. When it holds 35, the season turns and the bowl starts again, while every leaf stays counted in your history.</p>
-        <div class="counter" aria-live="polite"><b id="leafCount">0</b><span id="leafNote">of 35 leaves · season 1</span></div>
-        <p style="margin-top:22px"><button class="btn btn-line" id="dropLeaf" type="button">Finish a session</button></p>
-      </div>
-      <div class="bowl-box">
-        <svg id="bowl" viewBox="0 90 400 250" role="img" aria-label="A ceramic bowl filling with leaves">
-          <defs>
-            <linearGradient id="bowlGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9e2d0"/><stop offset="1" stop-color="#b9b19c"/></linearGradient>
-            <path id="leafShape" d="M0-22C14-14 17 6 0 22C-14 6-12-14 0-22Z"/>
-            <clipPath id="bowlClip"><path d="M20 0 H380 V190 Q200 210 20 190 Z"/></clipPath>
-          </defs>
-          <ellipse cx="200" cy="322" rx="120" ry="12" fill="var(--line)"/>
-          <path d="M40 190 Q200 380 360 190 Z" fill="url(#bowlGrad)"/>
-          <g id="leafPile" clip-path="url(#bowlClip)"></g>
-          <path d="M40 190 Q200 206 360 190" fill="none" stroke="#d8cfba" stroke-width="5" stroke-linecap="round"/>
-          <path d="M150 300 h100 l-12 22 h-76 z" fill="#b9b19c"/>
-        </svg>
+    <div class="wrap bowl-grid">
+      <div><span class="eyebrow">Small things add up</span><h2 id="bowl-title">It starts with<br><span>one leaf.</span></h2><p>Every credited session adds a leaf. After 35 sessions, new leaves settle over older ones in a new season’s colours. The bowl stays full. Your history keeps every one.</p><button class="btn btn-primary" id="dropLeaf" type="button">Leave a little trace <span aria-hidden="true">↘</span></button><p class="preview-note">Try it here. This is a website preview.</p></div>
+      <div class="bowl-illustration">
+        <div class="bowl-aura" aria-hidden="true"></div>
+        <div class="real-bowl" id="bowl" role="img" aria-label="Preview bowl with seven collected leaves"><img class="bowl-back" src="assets/room/bowl-back.png" alt="" aria-hidden="true"><div id="leafPile" class="leaf-pile" aria-hidden="true"><img src="assets/room/leaf-walnut.png" alt="" style="--x:14%;--y:25%;--r:-40deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:33%;--y:27%;--r:-9deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:52%;--y:29%;--r:22deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:15%;--y:25%;--r:53deg"><img src="assets/room/leaf-walnut.png" alt="" style="--x:34%;--y:27%;--r:-21deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:53%;--y:29%;--r:10deg"><img src="assets/room/leaf-sage.png" alt="" style="--x:16%;--y:25%;--r:41deg"></div><img class="bowl-front" src="assets/room/bowl-front.png" alt="" aria-hidden="true"></div>
+        <div class="counter" role="status" aria-live="polite"><b id="leafCount">7</b><span id="leafNote">leaves kept · season 1</span></div>
+        <span class="bowl-caption">Nothing wilts. Nothing is lost.</span>
       </div>
     </div>
   </section>
@@ -129,9 +109,9 @@
   <!-- Chapters -->
   <section class="chapters" aria-labelledby="chap-title">
     <div class="wrap">
-      <div class="chapters-head">
-        <span class="label">Journey</span>
-        <h2 id="chap-title">Your work, told as chapters.</h2>
+      <div class="chapters-head section-heading">
+        <span class="eyebrow">Your personal history</span>
+        <h2 id="chap-title">Not just hours.<br>Chapters of your life.</h2>
         <p>Label a session and it joins a chapter. Chapters take shape as the hours add up, rest on the shelf when you finish them, and keep a short story of how they went.</p>
       </div>
       <div class="shots">
@@ -213,120 +193,5 @@
   </div>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-(() => {
-  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const hasGsap = typeof window.gsap !== "undefined";
-  if (hasGsap && window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
-
-  /* Hero timer: a real countdown from 25:00, the ring filling as it goes. */
-  const total = 25 * 60, started = Date.now(), head = 0.18;
-  const chip = document.getElementById("chipTime"), ring = document.getElementById("ringProg");
-  const tick = () => {
-    const elapsed = Math.floor((Date.now() - started) / 1000) % total;
-    const left = total - elapsed;
-    chip.textContent = String(Math.floor(left / 60)).padStart(2, "0") + ":" + String(left % 60).padStart(2, "0");
-    const p = Math.min(1, head + elapsed / total * (1 - head));
-    ring.setAttribute("stroke-dasharray", p.toFixed(4) + " 1");
-  };
-  tick(); setInterval(tick, 1000);
-
-  /* Entrance: the lamp comes on, the copy settles, the phone floats in. */
-  if (hasGsap && !reduce) {
-    gsap.timeline({ defaults: { ease: "power3.out" } })
-      .from("[data-hero]", { y: 28, opacity: 0, duration: 0.9, stagger: 0.09 })
-      .from("[data-hero-stage] .phone", { y: 60, rotate: 3, opacity: 0, duration: 1.1 }, 0.15)
-      .from("[data-hero-stage] .ring", { scale: 0.85, opacity: 0, duration: 1.2 }, 0.2)
-      .from(".timer-chip", { x: 30, opacity: 0, duration: 0.8 }, 0.7)
-      .from(".mino", { y: 40, opacity: 0, duration: 0.9, ease: "back.out(1.6)" }, 0.8);
-    gsap.to(".mino", { y: -8, duration: 2.6, yoyo: true, repeat: -1, ease: "sine.inOut", delay: 1.8 });
-    gsap.to("[data-hero-stage] .phone", { yPercent: -6, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-  }
-
-  /* Falling leaves behind the hero, drawn on a canvas. */
-  const cv = document.getElementById("leaves");
-  if (cv && !reduce) {
-    const ctx = cv.getContext("2d"); let W, H, dpr, leaves = [], run = true;
-    const css = getComputedStyle(document.documentElement);
-    const color = () => css.getPropertyValue("--leaf").trim() || "#a8cf77";
-    const size = () => { dpr = Math.min(2, devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; };
-    const make = (y) => ({ x: Math.random() * W, y: y ?? -20, s: 6 + Math.random() * 9, r: Math.random() * 6.28,
-      vr: (Math.random() - 0.5) * 0.02, vy: 0.25 + Math.random() * 0.45, sway: Math.random() * 6.28, a: 0.12 + Math.random() * 0.25 });
-    size(); for (let i = 0; i < 16; i++) leaves.push(make(Math.random() * H));
-    addEventListener("resize", size);
-    new IntersectionObserver(([e]) => { run = e.isIntersecting; if (run) requestAnimationFrame(draw); }).observe(cv);
-    function draw() {
-      if (!run) return;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H); ctx.fillStyle = color();
-      for (const l of leaves) {
-        l.y += l.vy; l.sway += 0.01; l.r += l.vr; const x = l.x + Math.sin(l.sway) * 18;
-        if (l.y > H + 30) Object.assign(l, make());
-        ctx.save(); ctx.globalAlpha = l.a; ctx.translate(x, l.y); ctx.rotate(l.r); ctx.scale(l.s / 22, l.s / 22);
-        ctx.beginPath(); ctx.moveTo(0, -22); ctx.bezierCurveTo(14, -14, 17, 6, 0, 22); ctx.bezierCurveTo(-14, 6, -12, -14, 0, -22); ctx.fill(); ctx.restore();
-      }
-      requestAnimationFrame(draw);
-    }
-    requestAnimationFrame(draw);
-  }
-
-  /* Story: the active step swaps the phone screen. */
-  const steps = [...document.querySelectorAll(".story-step")];
-  const layers = [...document.querySelectorAll(".story-shot .layer")];
-  const setStep = (i) => {
-    steps.forEach((s, k) => s.classList.toggle("is-on", k === i));
-    layers.forEach((l, k) => l.classList.toggle("is-on", k < i));
-  };
-  layers.forEach(l => l.style.transition = reduce ? "none" : "opacity .6s ease");
-  const stepIO = new IntersectionObserver((ents) => ents.forEach(e => { if (e.isIntersecting) setStep(+e.target.dataset.step); }),
-    { rootMargin: "-45% 0px -45% 0px" });
-  steps.forEach(s => stepIO.observe(s));
-
-  /* Bowl: one click is one finished session. */
-  const pile = document.getElementById("leafPile"), countEl = document.getElementById("leafCount"),
-        note = document.getElementById("leafNote"), btn = document.getElementById("dropLeaf");
-  const NS = "http://www.w3.org/2000/svg", greens = ["#a8cf77", "#8fbf5d", "#6e9c43", "#c3dd93", "#b7863f"];
-  let count = 0, season = 1;
-  const addLeaf = (instant) => {
-    count++;
-    const level = Math.min(count, 35) / 35;
-    const spread = 120 + level * 30, x = 200 + (Math.random() - 0.5) * 2 * spread, y = 206 - level * 60 - Math.random() * 22 - (1 - Math.abs(x - 200) / 160) * 14;
-    const u = document.createElementNS(NS, "use");
-    u.setAttribute("href", "#leafShape"); u.setAttribute("fill", greens[(Math.random() * greens.length) | 0]);
-    const g = document.createElementNS(NS, "g"); g.appendChild(u); pile.appendChild(g);
-    const rot = (Math.random() - 0.5) * 160;
-    g.setAttribute("transform", `translate(${x} ${y}) rotate(${rot}) scale(1.5)`);
-    if (hasGsap && !reduce && !instant) {
-      gsap.fromTo(u, { y: -260, rotate: -60, opacity: 0 }, { y: 0, rotate: 0, opacity: 1, duration: 1.1, ease: "bounce.out" });
-    }
-    countEl.textContent = count;
-    if (count >= 35) {
-      note.textContent = "Season " + season + " complete. The bowl turns.";
-      btn.disabled = true;
-      setTimeout(() => {
-        const done = () => { pile.innerHTML = ""; count = 0; season++; countEl.textContent = 0; note.textContent = "of 35 leaves · season " + season; btn.disabled = false; };
-        if (hasGsap && !reduce) gsap.to(pile.children, { y: 40, opacity: 0, stagger: 0.01, duration: 0.6, onComplete: done }); else done();
-      }, 1400);
-    } else {
-      note.textContent = "of 35 leaves · season " + season;
-    }
-  };
-  btn.addEventListener("click", () => addLeaf(false));
-  for (let i = 0; i < 7; i++) addLeaf(true);
-  if (hasGsap && !reduce && window.ScrollTrigger) {
-    gsap.from("#leafPile g use", { y: -240, opacity: 0, duration: 1.1, stagger: 0.12, ease: "bounce.out",
-      scrollTrigger: { trigger: "#bowl", start: "top 75%" } });
-  }
-
-  /* Gentle reveals and the Plus parallax. */
-  if (hasGsap && !reduce && window.ScrollTrigger) {
-    gsap.utils.toArray("[data-reveal]").forEach((el, i) => gsap.from(el, { y: 36, opacity: 0, duration: 0.9, ease: "power3.out",
-      scrollTrigger: { trigger: el, start: "top 90%" }, delay: (i % 3) * 0.06 }));
-    gsap.fromTo("#plusImg", { scale: 1.15, yPercent: -6 }, { scale: 1, yPercent: 6, ease: "none",
-      scrollTrigger: { trigger: ".plus", start: "top bottom", end: "bottom top", scrub: true } });
-  }
-})();
-</script>
 </body>
 </html>
