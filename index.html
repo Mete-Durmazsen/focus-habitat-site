@@ -1,134 +1,184 @@
 <!doctype html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Focus Habitat</title>
-<meta name="description" content="A calm focus timer for iPhone. Every credited session leaves a leaf in a small room that slowly becomes yours. No streaks, no account, nothing leaves your device.">
-<meta property="og:title" content="Focus Habitat">
-<meta property="og:description" content="A little focus. A world of your own.">
-<meta property="og:image" content="https://focushabitat.app/assets/og.jpg?v=mino-v1">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="1200">
-<meta property="og:image:alt" content="Mino holding a bowl of leaves beside a warm desk lamp">
-<meta name="theme-color" content="#f2efe5">
-<link rel="icon" href="assets/favicon.png?v=mino-v1" type="image/png" sizes="64x64">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=mino-v1" sizes="180x180">
-<link rel="stylesheet" href="style.css?v=desk-v3">
-<script src="script.js?v=desk-v3" defer></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>(()=>{const r=document.documentElement;let t;try{const q=new URLSearchParams(location.search).get('qa-theme');if(q==='light'||q==='dark')t=q;}catch{}if(!t){try{const s=localStorage.getItem('focus-habitat-theme');if(s==='light'||s==='dark')t=s;}catch{}}if(!t)t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';r.setAttribute('data-theme',t);})();</script>
+  <script>document.documentElement.classList.add('js');if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion-ok');</script>
+  <meta name="theme-color" content="#f3e9d2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b2017" media="(prefers-color-scheme: dark)">
+  <title>Focus Habitat — Pomodoro &amp; Focus Timer for iPhone</title>
+  <meta name="description" content="Focus Habitat is a focus timer for iPhone. Use the Pomodoro method, focus with Mino, and build a room that remembers your focused time.">
+  <meta property="og:title" content="Focus Habitat | Make time for focus.">
+  <meta property="og:description" content="Focus with Mino. Keep your focus history. Watch your room become a record of your time.">
+  <meta property="og:image" content="https://focushabitat.app/assets/og-v4-desk.jpg">
+  <link rel="icon" href="assets/favicon.png" sizes="64x64">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/satoshi-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/art/workshop-v4-desk-desktop.webp" as="image" media="(min-width: 761px)">
+  <link rel="preload" href="assets/art/workshop-v4-compact-mobile.webp" as="image" media="(max-width: 760px)">
+  <link rel="canonical" href="https://focushabitat.app/"><link rel="alternate" hreflang="en" href="https://focushabitat.app/"><link rel="alternate" hreflang="tr" href="https://focushabitat.app/tr/"><link rel="alternate" hreflang="x-default" href="https://focushabitat.app/">
+  <link rel="stylesheet" href="style.css?v=mobile-story-1"><link rel="stylesheet" href="responsive.css?v=mobile-story-1">
+  <script type="module" src="script.js"></script>
 </head>
-<body>
-
-<header class="nav">
-  <div class="wrap">
-    <a class="brand" href="/"><img src="assets/icon.png?v=mino-v1" alt="">Focus Habitat</a>
-    <nav aria-label="Main"><a href="#inside">Inside the app</a><a href="#plus">Habitat Plus</a><a class="keep" href="support">Support</a></nav>
-  </div>
+<body class="home">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"><span></span></div>
+<header class="site-header">
+  <a class="brand" href="./" aria-label="Focus Habitat home"><img src="assets/icon-96.png" width="40" height="40" alt=""><span>Focus Habitat</span></a>
+  <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu" hidden><svg aria-hidden="true"><use href="assets/icons/sprite.svg#list"></use></svg></button>
+  <nav id="site-nav" aria-label="Main navigation"><a href="#your-story">Pomodoro</a><a href="#iphone">The app</a><a href="#plus">Habitat Plus</a><a href="support">Support</a></nav>
+  <nav class="language-switch" aria-label="Language"><a href="./" lang="en" aria-current="page">EN</a><a href="./tr/" lang="tr">TR</a></nav>
+  <button class="theme-toggle" id="theme-toggle" type="button" hidden aria-pressed="false" aria-label="Switch to dark theme"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16Z"/></svg></button>
+  <span class="availability"><span class="live-dot" aria-hidden="true"></span>Coming soon to the App Store</span>
 </header>
+<main id="main">
+  <section class="opening" aria-labelledby="hero-title" data-ambient>
+    <div class="workshop" id="room">
+      <div class="scene-viewport"><div class="stage">
+        <picture class="workshop-background"><source media="(max-width: 760px)" srcset="assets/art/workshop-v4-compact-mobile.webp"><img src="assets/art/workshop-v4-desk-desktop.webp" width="1920" height="1080" alt="" fetchpriority="high"></picture>
+        <div class="sunlight" aria-hidden="true"><span class="rays rays-a"></span><span class="rays rays-b"></span><span class="window-glow"></span></div>
+        <canvas class="motes hero-motes" aria-hidden="true"></canvas>
+        <div class="world-layer" aria-hidden="true">
+          <img id="room-mino" class="scene-object room-mino" src="assets/art/mino-idle.webp" width="512" height="512" alt="">
+          <img id="placed-lamp" class="scene-object placed-lamp" src="assets/art/lamp.webp" width="512" height="512" alt="">
+          <img class="scene-object desk-cup" src="assets/art/desk-cup.webp" width="512" height="512" alt="">
+          <img class="scene-object desk-mat" src="assets/art/desk-mat.webp" width="512" height="512" alt="">
+          <img class="scene-object desk-notes" src="assets/art/desk-notes.webp" width="512" height="512" alt="">
+          <img class="scene-object desk-headphones" src="assets/art/desk-headphones.webp" width="512" height="512" alt="">
+          <img class="scene-object desk-pencil" src="assets/art/desk-pencil.webp" width="512" height="512" alt="">
+          <img class="scene-object desk-pencil-cup" src="assets/art/desk-pencil-cup.webp" width="512" height="512" alt="">
+          <img class="scene-object desk-tray" src="assets/art/desk-tray.webp" width="512" height="512" alt="">
+          <img id="placed-fern" class="scene-object placed-fern earned-object" src="assets/art/fern.webp" width="512" height="512" alt="" hidden>
+          <img id="room-box" class="scene-object room-box earned-object" src="assets/art/memory-box.webp" width="512" height="512" alt="" hidden>
+          <img id="room-ceramic" class="scene-object room-ceramic earned-object" src="assets/art/keepsake-leaf.webp" width="512" height="512" alt="" hidden>
+          <img id="room-medal" class="scene-object room-medal medal-preview" src="assets/art/medal-sprout.webp" width="512" height="512" alt="">
+          <img id="room-medal-sun" class="scene-object room-medal medal-preview" src="assets/art/medal-sun.webp" width="512" height="512" alt="">
+          <img id="room-medal-mountain" class="scene-object room-medal medal-preview" src="assets/art/medal-mountain.webp" width="512" height="512" alt="">
+          <img class="scene-object shelf-books" src="assets/art/shelf-books.webp" width="512" height="512" alt="">
+          <img class="scene-object shelf-stone" src="assets/art/shelf-stone.webp" width="512" height="512" alt="">
+          <img class="scene-object shelf-clock" src="assets/art/desk-clock.webp" width="512" height="512" alt="">
+          <div class="room-bowl bowl"><img class="bowl-back" src="assets/art/leaf-bowl-back.webp" width="512" height="512" alt=""><div class="bowl-leaves" data-bowl="room"></div><img class="bowl-front" src="assets/art/leaf-bowl-front.webp" width="512" height="512" alt=""></div>
+        </div>
+        <a class="chapter-peek" href="#your-story"><img id="hero-chapter" class="scene-chapter" src="assets/art/reading-1.webp" width="1024" height="1024" alt="Reading chapter, first shape"><span>See it grow <svg aria-hidden="true"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></span></a>
+        <div class="focus-veil" aria-hidden="true"></div>
+        <div class="focus-clock" aria-hidden="true" hidden><span>Focus</span><strong data-focus-time>25:00</strong><small>Accelerated preview</small></div>
+      </div></div>
+      <div class="light-wash" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="eyebrow hero-eyebrow">Focus timer for iPhone</p>
+        <h1 id="hero-title"><span class="line"><span>Make time</span></span> <span class="line"><span>for <em>focus.</em></span></span></h1>
+        <p class="lede">Focus Habitat is a focus timer for iPhone. Focus alongside Mino, and let each completed session leave a lasting trace in your room.</p>
+        <div class="hero-actions"><a class="button" href="#iphone">See the app <svg aria-hidden="true"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></a></div>
 
-<main>
-  <section class="desk-intro" aria-labelledby="hero-title">
-    <div class="wrap">
-      <div class="intro-copy">
-        <h1 id="hero-title">A room that<br>remembers.</h1>
-        <div class="intro-side"><p>A focus app for iPhone. Quiet company while you work, and a little world shaped by the time you give it.</p><span class="release-note">Coming soon to the App Store</span></div>
       </div>
-      <div class="desk-scene" id="deskScene" data-lamp="on">
-        <div class="desk-light" aria-hidden="true"></div>
-        <div class="desk-surface" aria-hidden="true"></div>
-        <button class="desk-object lamp-object" id="deskLamp" type="button" disabled aria-label="Turn the desk lamp off" aria-pressed="true"><img src="assets/room/lamp.png" alt="" width="512" height="512"><span class="object-label">The light <span aria-hidden="true">↗</span></span></button>
-        <button class="desk-object book-object" id="deskBook" type="button" disabled aria-label="Open the chapter notebook" aria-expanded="false" aria-controls="chapterNote"><img class="book-open" src="assets/room/notebook.png" alt="" width="512" height="512"><img class="book-closed" src="assets/room/album.png" alt="" width="512" height="512"><span class="book-page" aria-hidden="true">Reading<br><small>A chapter of your own.</small></span><span class="object-label">A chapter <span aria-hidden="true">↗</span></span></button>
-        <img class="desk-pencil" src="assets/room/pencil.png" alt="" aria-hidden="true" width="512" height="512">
-        <div class="desk-bowl" role="img" aria-label="A ceramic bowl holding leaves from past focus sessions"><img class="bowl-back" src="assets/room/bowl-back.png" alt=""><div class="desk-leaves" aria-hidden="true"><img src="assets/room/leaf-sage.png" alt=""><img src="assets/room/leaf-walnut.png" alt=""><img src="assets/room/leaf-sage.png" alt=""></div><img class="bowl-front" src="assets/room/bowl-front.png" alt=""><span class="object-label">Time, kept</span></div>
-        <button class="desk-object mino-object" id="deskMino" type="button" disabled aria-label="Say hello to Mino"><img id="minoPose" src="assets/room/mino-idle.png" alt="" width="512" height="512"><span class="object-label">Mino <span aria-hidden="true">↗</span></span></button>
+    </div>
+    <div class="story-bar">
+      <div class="hero-story" id="hero-story" data-step="focus" role="region" aria-label="Animated example">
+        <div class="story-copy"><span class="story-label">Animated example</span><strong id="hero-story-caption">One session. A trace in your room.</strong><span class="story-note" data-story-status>Accelerated preview</span><span class="story-provenance">Decor: example arrangement. Medals: 10, 50 and 100 hours.</span></div>
+        <div class="story-timeline"><span class="story-progress-track" aria-hidden="true"><span data-story-progress></span></span>
+        <ol class="story-steps" aria-label="Example stages">
+          <li data-story-step="focus" class="is-current"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8a3 3 0 1 1 6 0v4l3 5-6 2-6-2 3-5Z"/></svg><span>Focus</span></li>
+          <li data-story-step="keep"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19C2 9 10 3 20 4c1 10-5 18-15 15Zm0 0L16 8"/></svg><span>Keep</span></li>
+          <li data-story-step="choose"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6c-3-2-6-2-9-2v14c3 0 6 0 9 2 3-2 6-2 9-2V4c-3 0-6 0-9 2Zm0 0v14"/></svg><span>Choose</span></li>
+          <li data-story-step="grow"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V11a9 9 0 0 1 18 0v10M6 21V11a6 6 0 0 1 12 0v10M9 21V11a3 3 0 0 1 6 0v10"/></svg><span>Grow</span></li>
+        </ol></div>
+        <div class="story-controls">
+          <button class="story-control" id="hero-story-toggle" type="button" aria-label="Play animated example" disabled><span class="control-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path class="pause-icon" d="M8 5v14M16 5v14"/><path class="play-icon" d="m9 5 11 7-11 7Z"/></svg></span><span data-story-toggle-label>Play</span></button>
+          <button class="story-control" id="hero-story-replay" type="button" aria-label="Replay animated example" disabled><span class="control-disc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11a8 8 0 1 1 2 7M4 11V4m0 7h7"/></svg></span><span>Replay</span></button>
+        </div>
+        <span class="story-dust" aria-label="Example Star Dust"><span aria-hidden="true">✦</span> <strong id="hero-story-dust">4</strong></span>
+        <noscript><span class="story-note">Static preview. Enable JavaScript to watch the example.</span></noscript>
       </div>
-      <div class="desk-footnote"><span class="desk-invitation">Touch the objects. Make yourself at home.</span><span id="deskStatus" role="status" aria-live="polite">A little light. A little company.</span></div>
-      <div class="chapter-note" id="chapterNote" hidden>
-        <img src="assets/room/chapter.png" alt="The Reading chapter's growing arch" width="512" height="512">
-        <div><span class="label">What your time becomes</span><h2>Something you can<br>look back on.</h2><p>Give a session a label, like Reading. Come back to it, and its chapter takes shape. Finish when you’re ready; its story stays on your shelf.</p><span class="note-caption">An illustrative chapter from the app. Your own history starts with you.</span></div>
-        <button type="button" class="note-close" id="closeChapter" aria-label="Close the chapter notebook">×</button>
-      </div>
+      <button class="motion-settings" id="motion-settings" hidden type="button" aria-pressed="false">Pause all motion</button>
     </div>
   </section>
 
-  <section class="inside" id="inside" aria-labelledby="inside-title">
-    <div class="wrap">
-      <div class="section-heading"><span class="label">Inside Focus Habitat</span><h2 id="inside-title">Your room. Your work.<br>Your own history.</h2><p>Start simply. Leave a trace. Find your way back to what matters.</p></div>
-      <div class="shots">
-        <figure><div class="phone"><img src="assets/01-habitat.jpg" alt="The actual Habitat screen, with Mino and focus session controls" width="414" height="900" loading="lazy"></div><figcaption><span class="shot-index">01</span><div><b>Settle in</b>Choose your time, add a label if you want, and begin. Mino is already there.</div></figcaption></figure>
-        <figure><div class="phone"><img src="assets/04-journey.jpg" alt="The actual Journey screen with active chapters" width="414" height="900" loading="lazy"></div><figcaption><span class="shot-index">02</span><div><b>Build a chapter</b>Your sessions gather around what you worked on. A chapter grows into something you can keep.</div></figcaption></figure>
-        <figure><div class="phone"><img src="assets/06-you.jpg" alt="The actual You screen showing a week of focus history" width="414" height="900" loading="lazy"></div><figcaption><span class="shot-index">03</span><div><b>Look back kindly</b>A record of the time you made. No streak to protect, and nothing to catch up on.</div></figcaption></figure>
-      </div>
+  <section class="pomodoro-section section" id="your-story" aria-labelledby="growth-title" data-ambient>
+    <div class="wrap pomodoro-layout">
+      <div class="section-heading" data-reveal><p class="eyebrow">The Pomodoro method</p><h2 id="growth-title">Focus for 25 minutes.<br>Rest for <em>5.</em></h2><p>Try the Pomodoro method: focus for 25 minutes, take a 5-minute break, then start a new session when you’re ready.</p></div>
+      <ol class="focus-rhythm" aria-label="A suggested Pomodoro rhythm" data-reveal data-stagger>
+        <li><div class="rhythm-clock"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="clock-track" cx="60" cy="60" r="52"/><circle class="clock-arc focus-arc" cx="60" cy="60" r="52" pathLength="100"/></svg><strong>25</strong><span>minutes</span></div><h3>Focus</h3></li>
+        <li><div class="rhythm-clock rest-clock"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="clock-track" cx="60" cy="60" r="52"/><circle class="clock-arc rest-arc" cx="60" cy="60" r="52" pathLength="100"/></svg><strong>5</strong><span>minutes</span></div><h3>Take a break</h3></li>
+        <li class="rhythm-story"><img src="assets/art/reading-3.webp" width="1024" height="1024" alt="A small reading chapter made of walnut, paper and moss fabric" loading="lazy"><h3>Your focused time takes shape</h3></li>
+      </ol>
     </div>
   </section>
 
-  <!-- Details -->
-  <section class="details" aria-labelledby="det-title">
+  <section id="keepsakes" class="keepsakes section" aria-labelledby="keepsakes-title" data-ambient>
     <div class="wrap">
-      <span class="label">Made for iPhone</span>
-      <h2 id="det-title">Fits around<br>your day.</h2>
-      <div class="tiles">
-        <div class="tile"><span class="k">Lock Screen</span><h3>Live Activities</h3><p>The countdown on your Lock Screen and in the Dynamic Island, with pause and end.</p></div>
-        <div class="tile"><span class="k">Home Screen</span><h3>Widgets and Siri</h3><p>Start a session from a widget, the Lock Screen, or by asking Siri.</p></div>
-        <div class="tile"><span class="k">12 languages</span><h3>Speaks yours</h3><p>English, Türkçe, Deutsch, Español, Français, Italiano, 日本語, 한국어, Nederlands, Português, Русский, 中文.</p></div>
-        <div class="tile"><span class="k">0 streaks</span><h3>No guilt, ever</h3><p>Nothing wilts, decays or resets. A quiet week costs you nothing.</p></div>
-        <div class="tile"><span class="k">Accessibility</span><h3>For everyone</h3><p>VoiceOver, Dynamic Type and Reduce Motion, throughout the app.</p></div>
-        <div class="tile"><span class="k">0 servers</span><h3>Private by design</h3><p>No account and no tracking. Your history lives on your iPhone.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Plus -->
-  <section id="plus" aria-labelledby="plus-title" class="plus-section">
-    <div class="wrap">
-      <div class="plus">
-        <div class="bg"><img id="plusImg" src="assets/plus.jpg" alt="" loading="lazy"></div>
-        <div class="copy">
-          <span class="label">Optional membership</span>
-          <h2 id="plus-title">Habitat Plus</h2>
-          <p>Eleven quiet sounds that play offline, every decor colour and an amber star, a leaf calendar of your whole history, and four new keepsake papers for sharing.</p>
-          <p><strong>Focus and earned progress always stay free.</strong> Plus never sells progress.</p>
+      <div class="keepsakes-top">
+        <div class="section-heading" data-reveal><p class="eyebrow">Keepsakes</p><h2 id="keepsakes-title">Focused time.<br>Lasting <em>memories.</em></h2><p>Completed focus sessions become leaves and, over time, lasting memories in your room.</p></div>
+        <div class="medal-wall">
+          <span class="medal-rail" aria-hidden="true"></span>
+          <div class="medal-row">
+            <figure class="medal" style="--mask:url(assets/art/medal-sprout.webp);--sway:-.4s"><span class="medal-hang"><img src="assets/art/medal-sprout.webp" width="512" height="512" alt="Wooden sprout medal" loading="lazy"><span class="medal-shine" aria-hidden="true"></span></span><figcaption>10 hours</figcaption></figure>
+            <figure class="medal" style="--mask:url(assets/art/medal-sun.webp);--sway:-2.1s"><span class="medal-hang"><img src="assets/art/medal-sun.webp" width="512" height="512" alt="Wooden sun medal" loading="lazy"><span class="medal-shine" aria-hidden="true"></span></span><figcaption>50 hours</figcaption></figure>
+            <figure class="medal" style="--mask:url(assets/art/medal-mountain.webp);--sway:-3.6s"><span class="medal-hang"><img src="assets/art/medal-mountain.webp" width="512" height="512" alt="Wooden mountain medal" loading="lazy"><span class="medal-shine" aria-hidden="true"></span></span><figcaption>100 hours</figcaption></figure>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="promise" aria-labelledby="promise-title">
-    <div class="wrap">
-      <span class="label">Our promise</span>
-      <h2 id="promise-title">Your history never leaves your phone.</h2>
-      <p>No servers, no accounts, no analytics sent anywhere. Sessions, labels and notes are stored on your iPhone, and you can export a backup whenever you like. <a href="privacy">Read the privacy policy</a>.</p>
-    </div>
-  </section>
-
-  <section aria-labelledby="faq-title">
-    <div class="wrap faq-wrap">
-      <div><span class="label">Questions</span><h2 id="faq-title">Good to know</h2></div>
-      <div class="faq">
-        <details><summary>Is Focus Habitat free?</summary><p>Yes. Focusing, chapters, the room and everything you earn are free. Habitat Plus is an optional membership with extra sounds, colours and designs.</p></details>
-        <details><summary>What if I skip a few days?</summary><p>Nothing happens. There are no streaks and nothing decays. Your room and chapters wait exactly where you left them.</p></details>
-        <details><summary>Does the timer keep going if I leave the app?</summary><p>Yes. Sessions are measured from real timestamps, so they stay accurate in the background and after the app closes. A notification tells you when time is up.</p></details>
-        <details><summary>Where is my data stored?</summary><p>Only on your iPhone. You can export a backup file at any time.</p></details>
-        <details><summary>Which devices are supported?</summary><p>iPhone with iOS 17 or later.</p></details>
+      <div class="bowl-story">
+        <div data-reveal><h3>The session ends.<br>The trace <em>stays.</em></h3><p>Leaves fill your bowl. Earned memories stay, even when you take time away.</p></div>
+        <div class="bowl-display" data-reveal><span class="bowl-light" aria-hidden="true"></span><div class="bowl large-bowl" role="img" aria-label="Illustrative ceramic bowl with earned leaves" id="keepsake-bowl"><img class="bowl-back" src="assets/art/leaf-bowl-back.webp" width="512" height="512" alt="" loading="lazy"><div class="bowl-leaves" data-bowl="keepsakes"><img src="assets/art/leaf-sage.webp" width="376" height="305" alt="" style="--x:26%;--y:35%;--r:-40deg"><img src="assets/art/leaf-sage.webp" width="376" height="305" alt="" style="--x:33%;--y:39%;--r:-20deg"><img src="assets/art/leaf-sage.webp" width="376" height="305" alt="" style="--x:40%;--y:35%;--r:0deg"><img src="assets/art/leaf-sage.webp" width="376" height="305" alt="" style="--x:47%;--y:39%;--r:20deg"><img src="assets/art/leaf-sage.webp" width="376" height="305" alt="" style="--x:54%;--y:35%;--r:40deg"></div><img class="bowl-front" src="assets/art/leaf-bowl-front.webp" width="512" height="512" alt="" loading="lazy"></div><img id="ceramic-reward" class="ceramic-reward" src="assets/art/keepsake-leaf.webp" width="512" height="512" alt="A ceramic leaf, earned when the bowl is full" loading="lazy"></div>
       </div>
     </div>
   </section>
 
-  <section class="final" aria-labelledby="final-title">
+  <section id="iphone" class="iphone-section section" aria-labelledby="iphone-title" data-ambient>
     <div class="wrap">
-      <img src="assets/icon.png?v=mino-v1" alt="Focus Habitat app icon" width="112" height="112">
-      <h2 id="final-title">A quiet place to do focused work.</h2>
-      <p>Coming soon to the App Store. <a class="mail" href="mailto:support@focushabitat.app">Get in touch</a></p>
+      <div class="section-heading app-heading" data-reveal><p class="eyebrow">The real app · iPhone</p><h2 id="iphone-title">Focus Habitat <em>in action.</em></h2><p>Focus. Complete a session. Return to the story you’re building.</p></div>
+      <div class="app-gallery" role="region" aria-label="Three steps, shown in the real app">
+        <figure class="app-screen app-screen-1" data-reveal><figcaption><span class="app-step" aria-hidden="true">01</span><h3>Start focusing</h3><p>Set your timer. Mino focuses alongside you.</p></figcaption><div class="app-device"><img src="assets/shots/02-focus.webp" width="660" height="1434" alt="Actual Focus Habitat app during a 25-minute focus, with the furnished room and Mino" loading="lazy"><span class="device-island" aria-hidden="true"></span></div></figure>
+        <figure class="app-screen app-screen-2" data-reveal><figcaption><span class="app-step" aria-hidden="true">02</span><h3>Leave a trace</h3><p>Your completed focus becomes a leaf and a record in your history.</p></figcaption><div class="app-device"><img src="assets/shots/03-completion.webp" width="660" height="1434" alt="Actual session complete screen: a leaf for the bowl and 2 Star Dust" loading="lazy"><span class="device-island" aria-hidden="true"></span></div></figure>
+        <figure class="app-screen app-screen-3" data-reveal><figcaption><span class="app-step" aria-hidden="true">03</span><h3>Return to your story</h3><p>Revisit your focused time and the chapters it has shaped.</p></figcaption><div class="app-device"><img src="assets/shots/04-journey.webp" width="660" height="1434" alt="Actual Journey screen showing the Reading chapter and its focused time" loading="lazy"><span class="device-island" aria-hidden="true"></span></div></figure>
+      </div>
+      <p class="gallery-note">Your focus becomes a story. Your story shapes your room.</p>
+    </div>
+  </section>
+
+  <section class="plus-section section is-night" id="plus" aria-labelledby="plus-title" data-ambient>
+    <div class="sky" aria-hidden="true"><span class="stars stars-a"></span><span class="stars stars-b"></span></div>
+    <div class="wrap plus-layout">
+      <div class="section-heading centered" data-reveal><p class="eyebrow">Habitat Plus</p><h2 id="plus-title">Personalise your<br><em>focus space.</em></h2><p>Optional sounds, decor finishes and new ways to look back on your focused time.</p></div>
+      <div class="plus-art" aria-hidden="true" data-reveal>
+        <span class="ripple"></span><span class="ripple"></span><span class="ripple"></span>
+        <div class="alcove"><span class="alcove-glow"></span><img class="plus-companion" src="assets/art/mino-resting.webp" width="512" height="512" alt="" loading="lazy"><img class="plus-star" src="assets/art/keepsake-star.webp" width="512" height="512" alt="" loading="lazy"><span class="star-sparkle sp-a">✦</span><span class="star-sparkle sp-b">✦</span><span class="star-sparkle sp-c">✦</span></div>
+      </div>
+      <ul class="plus-benefits" data-reveal data-stagger>
+        <li><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10c1.5-2.4 3-2.4 4.5 0s3 2.4 4.5 0 3-2.4 4.5 0 3 2.4 4.5 0"/><path d="M3 15.5c1.5-2.4 3-2.4 4.5 0s3 2.4 4.5 0 3-2.4 4.5 0 3 2.4 4.5 0" opacity=".55"/></svg><span>11 offline ambient sounds</span></li>
+        <li><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c-5 0-8.5 3.6-8.5 8.2 0 4.4 3.6 8.3 8 8.3 1.3 0 2-.8 2-1.8 0-1.1-.9-1.5-.9-2.6 0-1 .8-1.7 1.8-1.7h2.2c2.4 0 4-1.8 4-4.1C20.6 6.4 16.9 3.5 12 3.5z"/><circle cx="8" cy="11" r="1.2"/><circle cx="11.5" cy="7.6" r="1.2"/><circle cx="15.8" cy="8.6" r="1.2"/></svg><span>Decor colour finishes and the amber star</span></li>
+        <li><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 9.8h17M8.2 3v4M15.8 3v4"/><path d="M12.6 12.4c-2.2.3-3.3 1.8-3.3 3.9 2.2 0 3.4-1.4 3.3-3.9z"/></svg><span>A monthly leaf calendar</span></li>
+        <li><svg class="line-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h7.8l4.2 4.2v12.8h-12z"/><path d="M14 3.7v4.3h4.3M9.3 13h5.4M9.3 16.3h3.8"/></svg><span>Four keepsake sharing papers</span></li>
+      </ul>
+      <p class="plus-promise" data-reveal>Your focus timer, history and earned progress stay free.</p>
+      <a class="text-link" href="support#membership">About membership <svg aria-hidden="true"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></a>
+    </div>
+  </section>
+
+  <section id="privacy-faq" class="privacy-section section is-night" aria-labelledby="privacy-title" data-ambient>
+    <div class="sky" aria-hidden="true"><span class="stars stars-a"></span><span class="stars stars-b"></span><span class="stars stars-c"></span><span class="shooting-star"></span></div>
+    <span class="cursor-light" aria-hidden="true"></span>
+    <div class="wrap privacy-grid">
+      <div class="privacy-promise" data-reveal><span class="lock-orb" aria-hidden="true"><svg><use href="assets/icons/sprite.svg#lock-simple"></use></svg></span><p class="eyebrow">Privacy</p><h2 id="privacy-title">Your focus history.<br><em>On your iPhone.</em></h2><p>Start focusing without creating an account. Your history is stored on your iPhone.</p><a class="text-link" href="privacy">Read the privacy policy <svg aria-hidden="true"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></a></div>
+      <div class="faq" data-reveal><h3>Before you start</h3><details><summary>Can I use Focus Habitat as a Pomodoro timer?</summary><div class="faq-body"><p>Yes. Set a 25-minute focus session, take a 5-minute break, and start the next session yourself. You can also choose a different session length.</p></div></details><details open><summary>Do I need to create an account?</summary><div class="faq-body"><p>No. Open Focus Habitat, choose your session length and start focusing.</p></div></details><details><summary>Is Habitat Plus required?</summary><div class="faq-body"><p>No. The focus timer, your history and everything you earn stay free. Plus adds optional ways to personalise your experience.</p></div></details><p class="faq-support"><a class="text-link" href="support">Questions? Get in touch <svg aria-hidden="true"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></a></p></div>
+    </div>
+  </section>
+
+  <section id="closing" class="closing is-night" aria-labelledby="closing-title" data-ambient>
+    <div class="sky" aria-hidden="true"><span class="stars stars-a"></span><span class="stars stars-b"></span><span class="moon"></span></div>
+    <canvas class="motes fireflies" aria-hidden="true"></canvas>
+    <span class="desk-surface" aria-hidden="true"></span>
+    <div class="closing-desk">
+      <span class="lamp-light" aria-hidden="true"></span>
+      <img class="closing-lamp" src="assets/art/lamp.webp" width="512" height="512" alt="" loading="lazy">
+      <div class="closing-note" data-reveal><h2 id="closing-title">A little focus.<br>A world of <em>your own.</em></h2><p>Focus Habitat for iPhone. Your focused time, made visible.</p><p class="availability-inline"><span class="live-dot" aria-hidden="true"></span>Coming soon to the App Store</p><a class="button" href="support">Contact us <svg aria-hidden="true"><use href="assets/icons/sprite.svg#arrow-right"></use></svg></a></div>
+      <img class="closing-chapter" src="assets/art/reading-4.webp" width="1024" height="1024" alt="" loading="lazy">
     </div>
   </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    <span>© 2026 Focus Habitat</span>
-    <span><a href="privacy">Privacy</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></span>
-  </div>
-</footer>
-
+<footer class="site-footer wrap"><a class="brand" href="./"><img src="assets/icon-96.png" width="32" height="32" alt=""><span>Focus Habitat</span></a><nav aria-label="Legal"><a href="privacy">Privacy</a><a href="support">Support</a><a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a></nav><span>© 2026 Focus Habitat</span></footer>
 </body>
 </html>
