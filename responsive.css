@@ -396,3 +396,8 @@ html.motion-paused *,html.motion-paused *::before,html.motion-paused *::after{an
  .opening .workshop-background::after{display:none}
  .opening .scene-viewport::after{content:"";position:absolute;inset:auto 0 0;height:12%;z-index:4;pointer-events:none;background:linear-gradient(180deg,transparent,var(--c1))}
 }
+
+/* Official App Store artwork stays unchanged and still. A 48px badge has
+   12px clear space on every side; its intrinsic aspect ratio is preserved. */
+.store-badge{display:inline-flex;align-items:center;justify-content:center;padding:12px;line-height:0;vertical-align:middle;max-width:100%}
+.store-badge img{display:block;height:48px;width:auto;max-width:100%}
